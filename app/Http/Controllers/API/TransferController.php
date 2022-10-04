@@ -1,16 +1,16 @@
 <?php
-
-namespace App\Http\Controllers;
-
+   
+namespace App\Http\Controllers\API;
+   
 use Illuminate\Http\Request;
-use App\Models\Transfer;
 use App\Http\Controllers\API\BaseController as BaseController;
+use App\Models\Transfer;
 use Validator;
 use App\Http\Resources\TransferResource;
-
+   
 class TransferController extends BaseController
 {
-     /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -19,7 +19,7 @@ class TransferController extends BaseController
     {
         $transfers = Transfer::all();
     
-        return $this->sendResponse(TransferResource::collection($transfers), 'Lista de transferências');
+        return $this->sendResponse(TransferResource::collection($transfers), 'Lista de transferências.');
     }
     /**
      * Store a newly created resource in storage.
@@ -41,9 +41,9 @@ class TransferController extends BaseController
             return $this->sendError('Erro de validação.', $validator->errors());       
         }
    
-        $transfers = Transfer::create($input);
+        $transfer = Transfer::create($input);
    
-        return $this->sendResponse(new TransferResource($transfers), 'Transferência realizada com sucesso');
+        return $this->sendResponse(new TransferResource($transfer), 'Transferência realizada.');
     } 
    
     /**
@@ -57,10 +57,10 @@ class TransferController extends BaseController
         $transfer = Transfer::find($id);
   
         if (is_null($transfer)) {
-            return $this->sendError('Transferência não encontrada');
+            return $this->sendError('Transferência não encontrada.');
         }
    
-        return $this->sendResponse(new TransferResource($transfer), 'Detalhe da transferência');
+        return $this->sendResponse(new TransferResource($transfer), 'Detalhe da transferência.');
     }
     
     /**
@@ -89,7 +89,7 @@ class TransferController extends BaseController
         $transfer->value = $input['value'];
         $transfer->save();
    
-        return $this->sendResponse(new TransferResource($transfer), 'Transferência atualizada com sucesso.');
+        return $this->sendResponse(new TransferResource($transfer), 'Transferência atualizada.');
     }
    
     /**
@@ -102,6 +102,6 @@ class TransferController extends BaseController
     {
         $transfer->delete();
    
-        return $this->sendResponse([], 'Transferência deletada com sucesso');
+        return $this->sendResponse([], 'Transferência deletada');
     }
 }
