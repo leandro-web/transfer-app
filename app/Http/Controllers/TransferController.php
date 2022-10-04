@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Transfer;
+use Illuminate\Support\Str;
 
 class TransferController extends Controller
 {
@@ -13,7 +15,7 @@ class TransferController extends Controller
      */
     public function index()
     {
-        //
+        return 'teste de rota';
     }
 
     /**
@@ -24,7 +26,7 @@ class TransferController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request->all());
     }
 
     /**
@@ -35,7 +37,7 @@ class TransferController extends Controller
      */
     public function show($id)
     {
-        //
+        return "id= $id";
     }
 
     /**
@@ -47,7 +49,7 @@ class TransferController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        dd($request->all(), $id);
     }
 
     /**
@@ -58,6 +60,6 @@ class TransferController extends Controller
      */
     public function destroy($id)
     {
-        //
+        dd($id);
     }
 }
