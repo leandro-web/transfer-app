@@ -18,7 +18,7 @@ return new class extends Migration
             $table->bigInteger('payer');
             $table->bigInteger('payee');
             $table->float('value', 8, 2);
-            $table->boolean('status');
+            $table->boolean('status')->default(0);
             $table->timestamps();
         });
     }
