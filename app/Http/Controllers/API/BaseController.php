@@ -46,8 +46,8 @@ class BaseController extends Controller
     public function newBalance($input)
     {       
 
-        $balance_payer = Balance::where('user_id', $input['payer'])->first();;
-        $balance_payee = Balance::where('user_id', $input['payee'])->first();;
+        $balance_payer = Balance::where('user_id', $input['payer'])->first();
+        $balance_payee = Balance::where('user_id', $input['payee'])->first();
        
         $new_balance_payer = $balance_payer['balance'] - $input['value'];
         $new_balance_payee = $balance_payee['balance'] + $input['value'];
